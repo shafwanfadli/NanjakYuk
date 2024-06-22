@@ -37,7 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ],
         ),
-        backgroundColor: const Color(0xFF425C48), // Warna hijau
+        backgroundColor:Color.fromRGBO(107,62,38,1), // Warna hijau
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {

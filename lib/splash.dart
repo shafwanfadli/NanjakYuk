@@ -42,17 +42,17 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'assets/images/logo.png', // Path to your custom logo
+                '../assets/images/LogoNanjak.png', // Path to your custom logo
                 width: 150,
                 height: 150,
               ),
               const SizedBox(height: 20),
               const Text(
-                'Baturaden Tourism',
+                'NanjakYuk',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 29,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 8, 5, 5),
                 ),
               ),
               const SizedBox(height: 20),

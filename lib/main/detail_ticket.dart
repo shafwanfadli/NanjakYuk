@@ -100,7 +100,6 @@ class DetailTicketPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10),
             Container(
               decoration: BoxDecoration(
                 color: Color.fromRGBO(66, 92, 72, 1),

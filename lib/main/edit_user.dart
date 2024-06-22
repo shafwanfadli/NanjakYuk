@@ -54,7 +54,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Profile'),
-        backgroundColor: Color(0xFF425C48),
+        backgroundColor:Color.fromRGBO(107,62,38,1),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -136,7 +136,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       color: Colors.white), // Set the text color to white
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF425C48),
+                  backgroundColor: Color.fromRGBO(107,62,38,1),
                 ),
               ),
             ],

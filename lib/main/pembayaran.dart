@@ -28,10 +28,8 @@ class PaymentFormPage extends StatelessWidget {
     User? user = auth.currentUser;
 
     if (user != null) {
-      CollectionReference orders =
-          FirebaseFirestore.instance.collection('orders');
-      CollectionReference users =
-          FirebaseFirestore.instance.collection('users');
+      CollectionReference orders = FirebaseFirestore.instance.collection('orders');
+      CollectionReference users = FirebaseFirestore.instance.collection('users');
 
       return Scaffold(
         appBar: AppBar(
@@ -56,8 +54,8 @@ class PaymentFormPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                        width: 150,
-                        height: 150,
+                        width: 100,
+                        height: 100,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -78,8 +76,10 @@ class PaymentFormPage extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
+                          SizedBox(height: 5),
                           Text(
                             placeName,
                             style: TextStyle(
@@ -96,116 +96,32 @@ class PaymentFormPage extends StatelessWidget {
               SizedBox(height: 20),
               Divider(
                 color: Color(0xFF373A40),
-                thickness: 5,
+                thickness: 1,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'ID Order:',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    orderId,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+              buildDetailRow(
+                icon: Icons.confirmation_number,
+                label: 'ID Order',
+                value: orderId,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Tiket:',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    '$ticketCount',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+             
+           buildDetailRow(
+                icon: Icons.date_range,
+                label: 'Tanggal',
+                value: '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Tanggal:',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+              buildDetailRow(
+                icon: Icons.attach_money,
+                label: 'Total Harga',
+                value: 'Rp ${totalPrice.toStringAsFixed(3)}',
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Total Harga:',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    'Rp ${totalPrice.toStringAsFixed(3)}',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Pembayaran:',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    selectedPaymentMethod,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+              buildDetailRow(
+                icon: Icons.payment,
+                label: 'Pembayaran',
+                value: selectedPaymentMethod,
               ),
               Divider(
                 color: Color(0xFF373A40),
-                thickness: 5,
+                thickness: 1,
               ),
               SizedBox(height: 20),
               Center(
@@ -248,11 +164,9 @@ class PaymentFormPage extends StatelessWidget {
 
                       if (userEmail != null) {
                         try {
-                          DocumentSnapshot userDoc =
-                              await users.doc(user.uid).get();
+                          DocumentSnapshot userDoc = await users.doc(user.uid).get();
                           String username = userDoc['username'];
-                          String email = userDoc[
-                              'email']; // Ensure the field name is correct
+                          String email = userDoc['email'];
 
                           await orders.add({
                             'wisata': placeName,
@@ -275,15 +189,14 @@ class PaymentFormPage extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => IndexPage(
                                     username: username,
-                                    email: email)), // Pass data to IndexPage
+                                    email: email)),
                           );
                         } catch (e) {
                           print('Error saving data: $e');
 
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content:
-                                  Text('Terjadi kesalahan. Silakan coba lagi.'),
+                              content: Text('Terjadi kesalahan. Silakan coba lagi.'),
                               duration: Duration(seconds: 2),
                             ),
                           );
@@ -320,5 +233,38 @@ class PaymentFormPage extends StatelessWidget {
         ),
       );
     }
+  }
+
+  Widget buildDetailRow({required IconData icon, required String label, required String value}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Icon(icon, color: Colors.black, size: 20),
+              SizedBox(width: 10),
+              Text(
+                label,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

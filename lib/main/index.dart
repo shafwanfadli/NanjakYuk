@@ -48,7 +48,7 @@ class _IndexPageState extends State<IndexPage> {
 
   Future<List<Place>> fetchPlaces() async {
     final response =
-        await rootBundle.rootBundle.loadString('assets/places.json');
+        await rootBundle.rootBundle.loadString('../assets/places.json');
     List jsonResponse = json.decode(response);
     return jsonResponse.map((place) => Place.fromJson(place)).toList();
   }
@@ -70,7 +70,7 @@ class _IndexPageState extends State<IndexPage> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(66, 92, 72, 1),
+                  color: Color.fromRGBO(107,62,38,1),
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: Padding(
@@ -83,15 +83,15 @@ class _IndexPageState extends State<IndexPage> {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: const Color.fromARGB(255,251,255,192),
                         ),
                       ),
                       SizedBox(height: 5),
                       Text(
-                        'Mau kemana hari ini?',
+                        'Mau trip ke gunung mana nich??',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.grey,
+                          color: const Color.fromARGB(255, 251, 255, 192),
                         ),
                       ),
                       SizedBox(height: 20),
@@ -369,7 +369,7 @@ class _IndexPageState extends State<IndexPage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFF425C48),
+        backgroundColor: Color.fromARGB(255, 107, 62 , 38),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -385,7 +385,7 @@ class _IndexPageState extends State<IndexPage> {
             label: 'Profile',
           ),
         ],
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: const Color.fromARGB(255, 251, 255, 192),
         unselectedItemColor: Colors.grey,
         currentIndex: 0,
         onTap: (index) {

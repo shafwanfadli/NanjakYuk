@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "292373945139",
+    "project_id": "nanjak-77aa5",
+    "storage_bucket": "nanjak-77aa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292373945139:android:9965ce504ff6ec04c73c46",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdeaUNaXJuaJPmhgVOfmwYDaMAuP-uetE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

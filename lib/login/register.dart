@@ -19,6 +19,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  
+  get password => null;
 
   @override
   void dispose() {
@@ -51,6 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
       await _firestore.collection('users').doc(userCredential.user?.uid).set({
         'username': _usernameController.text,
         'email': _emailController.text,
+        'password' : _passwordController.text,
         // Add more fields as needed
       });
 
@@ -79,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFECEFED), // Warna latar belakang form
+      backgroundColor: Color.fromARGB(255, 255, 255, 255), // Warna latar belakang form
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -109,7 +112,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Column(
                     children: [
                       Image.asset(
-                        'assets/images/logo.png', // Path to your logo image
+                        '../assets/images/LogoNanjak.png', // Path to your logo image
                         height: 150,
                         width: 150,
                       ),

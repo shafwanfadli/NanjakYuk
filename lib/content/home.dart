@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                      'assets/images/background.jpg'), // Path to your background image
+                      '../assets/images/background1.jpg'), // Path to your background image
                   fit: BoxFit.cover,
                   alignment:
                       Alignment.topCenter, // Atur alignment background ke atas
@@ -29,9 +29,9 @@ class HomePage extends StatelessWidget {
                 // Menambahkan Spacer atau SizedBox untuk mendorong teks ke atas
                 const Spacer(flex: 1), // Spacer dengan flex 1
                 Container(
-                  margin: const EdgeInsets.only(left: 27), // Atur margin kiri
+                  margin: const EdgeInsets.only(right: 45), // Atur margin kiri
                   child: const Text(
-                    'Explore Baturaden With Us.',
+                    'NanjakYuk',
                     style: TextStyle(
                       fontFamily: 'SFProText',
                       fontSize: 60,
@@ -40,17 +40,17 @@ class HomePage extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                ),
+                ),SizedBox(height: 20),
                 Container(
                   width: 345, // Tentukan lebar yang diinginkan
-                  height: 65,
+                  height: 100,
                   child: const Text(
-                    'We Travelin are ready to help you on vacation around Indonesia',
+                    'Bantu anda menemukan trip pendakian gunung di JAWA',
                     style: TextStyle(
                       fontFamily: 'SFProText',
-                      fontSize: 16,
+                      fontSize: 22,
                       height: 1.5,
-                      color: Colors.white,
+                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
                   ),
                 ),
@@ -92,7 +92,7 @@ class HomePage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: const [
                           Text(
-                            'Let\'s Get Started',
+                            'Mulai cari trip yuk!',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,

@@ -7,14 +7,20 @@ import 'package:flutter_application_1/main/Myticket.dart';
 import 'package:flutter_application_1/main/index.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/main/profil_user.dart';
-import 'package:flutter_application_1/splash.dart'; // Import the splash screen
-// Import Firestore
+import 'package:flutter_application_1/splash.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // Enable offline persistence for Firestore
+  FirebaseFirestore.instance.settings = const Settings(
+    persistenceEnabled: true,
+  );
+
   runApp(const MyApp());
 }
 
@@ -33,7 +39,7 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       initialRoute: '/',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
+        // When navigating to the "/" route, build the HomePage widget.
         '/home': (context) => const HomePage(),
         // When navigating to the "/login" route, build the LoginPage widget.
         '/login': (context) => const LoginPage(),

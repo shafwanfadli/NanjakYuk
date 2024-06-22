@@ -37,6 +37,7 @@ class _LoginPageState extends State<LoginPage> {
             .get();
         String username = userDoc['username'];
         String email = userDoc['email'];
+        String password = userDoc['password'];
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -72,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFECEFED),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -82,22 +83,22 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/images/logo.png',
+                    '../assets/images/LogoNanjak.png',
                     height: 150,
                     width: 150,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 30),
                   Text(
-                    'Welcome Back',
+                    'Login',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 30,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
